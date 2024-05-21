@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlatTube</title>
+    <link rel="icon" href="image/BTUBElogo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <style>
         body {
@@ -66,10 +67,18 @@
 
         main {
             padding: 20px 0;
+            display: flex;
+            flex-direction: column; /* Układ pionowy */
+            align-items: center; /* Wycentrowanie zawartości w osi poziomej */
+        }
+
+        .movie-row {
+            display: flex;
             overflow-x: auto; /* Umożliwienie przewijania poziomego */
             white-space: nowrap; /* Zapobieganie przerywaniu wierszy */
-            display: flex;
             justify-content: center; /* Wycentrowanie kolumn */
+            width: 100%; /* Ustawienie szerokości wiersza na 100% */
+            margin-bottom: 20px; /* Odstęp między wierszami */
         }
 
         .featured-movie {
@@ -202,41 +211,45 @@
         </nav>
     </header>
     <main>
-        <div class="featured-movie">
-            <img src="image/movie1.png" alt="Movie 1">
-            <div class="movie-info"></div>
+        <div class="movie-row">
+            <div class="featured-movie">
+                <img src="image/movie1.png" alt="Movie 1">
+                <div class="movie-info"></div>
+            </div>
+            <div class="featured-movie">
+                <img src="image/movie2.png" alt="Movie 2">
+                <div class="movie-info"></div>
+            </div>
+            <div class="featured-movie">
+                <img src="image/movie3.png" alt="Movie 3">
+                <div class="movie-info"></div>
+            </div>
+            <div class="featured-movie">
+                <img src="image/movie4.png" alt="Movie 4">
+                <div class="movie-info"></div>
+            </div>
         </div>
-        <div class="featured-movie">
-            <img src="image/movie2.png" alt="Movie 2">
-            <div class="movie-info"></div>
-        </div>
-        <div class="featured-movie">
-            <img src="image/movie3.png" alt="Movie 3">
-            <div class="movie-info"></div>
-        </div>
-        <div class="featured-movie">
-            <img src="image/movie4.png" alt="Movie 4">
-            <div class="movie-info"></div>
-        </div>
-        <div class="featured-movie">
-            <img src="image/movie5.png" alt="Movie 5">
-            <div class="movie-info"></div>
-        </div>
-        <div class="featured-movie">
-            <img src="image/movie6.png" alt="Movie 6">
-            <div class="movie-info"></div>
-        </div>
-        <div class="featured-movie">
-            <img src="image/movie7.png" alt="Movie 7">
-            <div class="movie-info"></div>
-        </div>
-        <div class="featured-movie">
-            <img src="image/movie8.png" alt="Movie 8">
-            <div class="movie-info"></div>
+        <div class="movie-row">
+            <div class="featured-movie">
+                <img src="image/movie5.png" alt="Movie 5">
+                <div class="movie-info"></div>
+            </div>
+            <div class="featured-movie">
+                <img src="image/movie6.png" alt="Movie 6">
+                <div class="movie-info"></div>
+            </div>
+            <div class="featured-movie">
+                <img src="image/movie7.png" alt="Movie 7">
+                <div class="movie-info"></div>
+            </div>
+            <div class="featured-movie">
+                <img src="image/movie8.png" alt="Movie 8">
+                <div class="movie-info"></div>
+            </div>
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 BlatTube</p>
+        <p>&copy; 2024 BlatStudio</p>
     </footer>
 </body>
 </html>
