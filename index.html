@@ -87,7 +87,7 @@
 
         .featured-movie img {
             width: 100%; /* Zapewnienie, że obrazy zajmują całą dostępną szerokość */
-            height: 100%; /* Zachowanie proporcji */
+            height: auto; /* Zachowanie proporcji */
         }
 
         .movie-info {
@@ -120,14 +120,20 @@
             background-color: #111;
         }
 
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
+        @media (max-width: 1200px) {
+            .featured-movie {
+                width: 180px;
             }
 
+            .movie-info::before {
+                font-size: 35px;
+                padding: 9px;
+            }
+        }
+
+        @media (max-width: 992px) {
             .featured-movie {
-                width: 150px;
+                width: 160px;
             }
 
             .movie-info::before {
@@ -136,9 +142,40 @@
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .featured-movie {
+                width: 140px;
+            }
+
+            .movie-info::before {
+                font-size: 25px;
+                padding: 7px;
+            }
+        }
+
+        @media (max-width: 576px) {
             .logo img {
                 width: 200px;
+            }
+
+            .featured-movie {
+                width: 120px;
+            }
+
+            .movie-info::before {
+                font-size: 20px;
+                padding: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                width: 150px;
             }
 
             .featured-movie {
@@ -146,7 +183,7 @@
             }
 
             .movie-info::before {
-                font-size: 20px;
+                font-size: 18px;
                 padding: 5px;
             }
         }
@@ -185,7 +222,7 @@
             <img src="image/movie5.png" alt="Movie 5">
             <div class="movie-info"></div>
         </div>
-		        <div class="featured-movie">
+        <div class="featured-movie">
             <img src="image/movie6.png" alt="Movie 6">
             <div class="movie-info"></div>
         </div>
