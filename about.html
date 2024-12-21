@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlatTube</title>
+    <link rel="icon" href="image/BTUBElogo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Fredoka One', Arial, sans-serif;
+            margin: 0;
+            background-color: #141414;
+            color: white;
+            scrollbar-width: thin;
+            scrollbar-color: #666 #333;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            background-color: #666;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #666;
+            border-radius: 10px;
+            border: 2px solid #333;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #333;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            background-color: #111;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: red;
+        }
+
+        .search-bar {
+            margin-top: 10px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #666;
+            border-radius: 4px;
+            background-color: #222;
+            color: white;
+        }
+
+        .search-bar input[type="submit"] {
+            padding: 8px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar input[type="submit"]:hover {
+            background-color: darkred;
+        }
+
+        main {
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .movie-row {
+            display: flex;
+            white-space: nowrap;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .featured-movie {
+            flex: 0 0 auto;
+            width: 200px;
+            padding: 0 10px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .featured-movie:hover {
+            transform: scale(1.05);
+        }
+
+        .featured-movie img {
+            width: 100%;
+            height: auto;
+        }
+
+        .movie-title {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .movie-info {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+        }
+
+        .movie-info::before {
+            content: '▶';
+            font-size: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 100%;
+            padding: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .movie-info:hover::before {
+            background-color: rgba(255, 0, 0, 0.7);
+            color: rgba(255, 255, 255, 1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #111;
+        }
+
+        .creators {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 0;
+            background-color: #222;
+        }
+
+        .creator {
+            text-align: center;
+        }
+
+        .creator img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .creator .name {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        .creator .description {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .creator .social-media {
+            margin-top: 10px;
+        }
+
+        .creator .social-media a {
+            margin: 0 5px;
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .creator .social-media a:hover {
+            color: red;
+        }
+
+        @media (max-width: 1200px) {
+            .featured-movie {
+                width: 180px;
+            }
+
+            .movie-info::before {
+                font-size: 35px;
+                padding: 9px;
+            }
+
+            .movie-title {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .featured-movie {
+                width: 160px;
+            }
+
+            .movie-info::before {
+                font-size: 30px;
+                padding: 8px;
+            }
+
+            .movie-title {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .featured-movie {
+                width: 140px;
+            }
+
+            .movie-info::before {
+                font-size: 25px;
+                padding: 7px;
+            }
+
+            .movie-title {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo img {
+                width: 200px;
+            }
+
+            .featured-movie {
+                width: 120px;
+            }
+
+            .movie-info::before {
+                font-size: 20px;
+                padding: 6px;
+            }
+
+            .movie-title {
+                font-size: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                width: 150px;
+            }
+
+            .featured-movie {
+                width: 100px;
+            }
+
+            .movie-info::before {
+                font-size: 18px;
+                padding: 5px;
+            }
+
+            .movie-title {
+                font-size: 6px;
+            }
+        }
+
+        .about-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-section h3 {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .fab.fa-discord {
+            color: #B9BBBE;
+            transition: color 0.3s ease;
+        }
+
+        .fab.fa-discord:hover {
+            color: #6699FF;
+        }
+    </style>
+    <script>
+        function searchMovie(event) {
+            event.preventDefault();
+            const query = document.querySelector('input[name="search"]').value.toLowerCase();
+            const movies = document.querySelectorAll('.featured-movie');
+
+            for (let movie of movies) {
+                const title = movie.querySelector('.movie-title').innerText.toLowerCase();
+                if (title.includes(query)) {
+                    movie.scrollIntoView({ behavior: 'smooth' });
+                    return;
+                }
+            }
+            alert('Film nie zostal znaleziony.');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="image/BTUBE.png" width="250" alt="BlatTube Logo"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Strona Glowna</a></li>
+                <li><a href="movies.html">Filmy</a></li>
+                <li><a href="about.html">O Nas</a></li>
+                <li><a href="channels.html">Kanaly</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="about-section">
+            <h1>O NAS</h1>
+            <h3>Jestesmy zespolem pelnym pasji i zaangazowania, ktory zamierza rozpoczac swoja kariere, publikujac zarowno zabawne i ciekawe odcinki.
+			<br>Naszym celem jest dostarczanie rozrywki na najwyzszym poziomie oraz budowanie silnej, zintegrowanej spolecznosci wokol naszych tresci.</h3>
+			<h3>Nasz nowy projekt, platforma "BlatTube" zostal stworzony z mysla o prezentowaniu wylacznie naszych autorskich odcinkow, serii oraz roznorodnych filmow. 
+			<br>Chcemy, aby kazdy nasz widz znalazl cos dla siebie i czul sie czescia naszej spolecznosci.</h3>
+
+			<h3>Wierzymy, ze z Waszym wsparciem nasza dalsza droga bedzie prowadzila do stworzenia duzej i zaangazowanej spolecznosci, ktora bedzie razem z nami rosla i rozwijala sie. 
+			<br>Dziekujemy wszystkim za zaufanie i wsparcie.</h3>
+			<h2>Pozdrawiamy - Ekipa BLAT.</h2>
+			<h1>Informacje Kontaktowe
+			<br>Email: blaty.team@gmail.com
+			<br>Discord: <a href="https://discord.gg/gT3GPssQdE" target="_blank"><i class="fab fa-discord"></i></a></h1>
+			
+        </div>
+    </main>
+    <section class="creators">
+        <div class="creator">
+            <img src="image/Rybus.png" alt="Creator 1">
+            <div class="name">Rybus</div>
+            <div class="description">Po prostu. <br>Ryba</div>
+            <div class="social-media">
+                <a href="https://tiktok.com/@rypus" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@rybekyt2617" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://instagram.com/rybus09" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="creator">
+            <img src="image/szym0neekgif.gif" alt="Creator 2">
+            <div class="name">Szym0neek</div>
+            <div class="description">Maly tworca rozpoczynajacy <br>przygode z nagrywaniem</div>
+            <div class="social-media">
+                <a href="https://tiktok.com/@szym0neek" target="_blank"><i class="fab fa-tiktok"></i></a>
+				<a href="https://tiktok.com/@szym0neekplus" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/@szym0neek" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://instagram.com/szym0neek" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="creator">
+            <img src="image/Bober.png" alt="Creator 3">
+            <div class="name">Bober</div>
+            <div class="description">Boo<br>bies</div>
+            <div class="social-media">
+                <a href="https://tiktok.com/@im__dumb__asf" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://instagram.com/boburtoja" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 BlatStudio</p>
+    </footer>
+</body>
+</html>
